@@ -72,5 +72,12 @@ button.addEventListener('click',()=>{
       quantity : 1
     })
    }
-   console.log(cart);
+   let cartQuantity = 0;
+   cart.forEach((item) =>
+  {
+    cartQuantity += item.quantity;
+  });
+  console.log(cartQuantity);
+  document.querySelector('.js-cart-quantity').innerHTML= cartQuantity;
+  console.log(cart);
 })});
