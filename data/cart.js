@@ -1,4 +1,4 @@
-export const cart=[] ;
+export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 export function addTocart(productId) {
   let matchingItem;
@@ -15,6 +15,21 @@ export function addTocart(productId) {
       quantity: 1
     })
   }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+ 
+if(cart==[]){
+  document.querySelector('.order-summary').innerHTML='<h1>Your Cart is Empty<h1>'
+}
+export function removecart(productId){
+  const newcart = [];
+  cart.forEach((cartitem) => {
+    if (cartitem.productId !== productId) {
+      newcart.push(cartitem);
+    }
+  });
+  cart = newcart;
 }
 
 
